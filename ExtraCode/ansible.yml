@@ -16,3 +16,4 @@
 
     - name: Open container
       command: docker exec -it wordpresswithrds_wordpress_1 bash -c wordpresswithrds_wordpress_1 < ExtraCode/docker.sh
+      

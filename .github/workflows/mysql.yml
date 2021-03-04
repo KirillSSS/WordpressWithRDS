@@ -25,6 +25,7 @@ jobs:
           workflow: terraform.yml
           workflow_conclusion: success
           name: output
+          repo: KirillSSS/Infrastructure_As_Code
 
       - shell: bash
         run: |

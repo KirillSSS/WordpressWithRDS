@@ -8,7 +8,7 @@
       command: touch docker-compose.yml
 
     - name: fill docker-compose.yml
-      command: echo -e "version: '3.3'\n\nservices:\n   wordpress:\n     image: wordpress:latest\n     ports:\n       - "80:80"\n     restart: always" >> docker-compose.yml
+      command: echo -e "version: '3.3'\n\nservices:\n   wordpress:\n     image: wordpress:latest\n     ports:\n       - 80:80\n     restart: always" >> docker-compose.yml
 
     - name: Docker-compose up
       command: docker-compose up -d

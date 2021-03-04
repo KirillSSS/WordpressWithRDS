@@ -5,7 +5,7 @@
 
   tasks:
     - name: add docker-compose.yml
-      command: echo '' > docker-compose.yml
+      command: touch docker-compose.yml
 
     - name: fill docker-compose.yml
       command: cat Docker/docker-compose.yml > docker-compose.yml

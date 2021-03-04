@@ -1,0 +1,17 @@
+- name: ansible
+  gather_facts: false
+  hosts: [all]
+  become: yes
+
+  tasks:
+    - name: Clone a repo from GitHub
+      command: git clone https://github.com/KirillSSS/WordpressWithRDS.git
+
+    - name: Move to new repo
+      command: cd WordpressWithRDS
+
+    - name: Docker-compose up
+      command: docker-compose up -d
+
+    - name: Open container
+      command: docker exec -it wordpresswithrds_wordpress_1 bash -c wordpresswithrds_wordpress_1 < ExtraCode/docker.sh

@@ -41,6 +41,24 @@ jobs:
       - name: Ansible
         uses: saubermacherag/ansible-playbook-docker-action@v1.3
         with:
+          playbookName: 'ExtraCode/git.yml'
+          inventoryFile: 'ExtraCode/hosts'
+          keyFile: 'ExtraCode/key.pem'
+
+      - id: host
+        env:
+          SSH: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+            host=$(grep "ec2_endpoint" output.log | awk -F  ":" '{print $1}' )
+            host=${host//'ec2_endpoint = "'}
+            host=${host//'"'}
+            echo $host >> ExtraCode/hosts
+            echo "$SSH" > ExtraCode/key.pem
+            chmod 400 ExtraCode/key.pem
+            cat ExtraCode/key.pem
+      - name: Ansible
+        uses: saubermacherag/ansible-playbook-docker-action@v1.3
+        with:
           playbookName: 'ExtraCode/ansible.yml'
           inventoryFile: 'ExtraCode/hosts'
           keyFile: 'ExtraCode/key.pem'

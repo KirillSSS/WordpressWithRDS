@@ -1,0 +1,8 @@
+- name: ansible
+  gather_facts: false
+  hosts: [all]
+  become: yes
+
+  tasks:
+    - name: Clone a repo from GitHub
+      command: git clone https://github.com/KirillSSS/WordpressWithRDS.git

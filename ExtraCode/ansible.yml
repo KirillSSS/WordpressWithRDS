@@ -3,13 +3,9 @@
   hosts: [all]
   become: yes
 
-  pre_tasks:
-    - name: Clone a repo from GitHub
-      command: git clone https://github.com/KirillSSS/WordpressWithRDS.git
-
   tasks:
-    - name: Move to new repo
-      command: cd WordpressWithRDS
+    - name: add docker-compose.yml
+      command: cat Docker/docker-compose.yml > docker-compose.yml
 
     - name: Docker-compose up
       command: docker-compose up -d
